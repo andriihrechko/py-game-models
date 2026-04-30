@@ -13,8 +13,8 @@ def main() -> None:
         race = info.get("race")
         skills = race.get("skills", [])
         race, _ = Race.objects.get_or_create(
-            name=race["name"],
-            description=race["description"]
+            name=race.get("name"),
+            description=race.get("description")
         )
         for skill in skills:
             Skill.objects.get_or_create(
@@ -24,8 +24,8 @@ def main() -> None:
         guild = info.get("guild")
         if guild is not None:
             guild, _ = Guild.objects.get_or_create(
-                name=guild["name"],
-                description=guild["description"]
+                name=guild.get("name"),
+                description=guild.get("description")
             )
         Player.objects.create(
             nickname=player,
